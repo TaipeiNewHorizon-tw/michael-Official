@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>我的數位名片V.31</title>
-        <style>
-        body { font-family: sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .card-container { background: white; width: 90%; max-width: 400px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
-        .business-card-img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
-        .btn { display: block; width: 100%; padding: 12px 0; margin: 10px 0; border: none; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; }
-        .btn-contact { background-color: #007AFF; color: white; }
-        .btn-line { background-color: #06C755; color: white; } /* Line 官方綠 */
-        .btn-url { background-color: #34C759; color: white; }
-        .btn-form { background-color: #FF9500; color: white; }
-        .btn-map { background-color: #4285F4; color: white; }
-        .btn:hover { opacity: 0.8; }
-    </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的數位名片</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background:#fff; font-family: -apple-system, "PingFang TC", sans-serif; display:flex; justify-content:center; }
+  .phone { width: 100%; max-width: 430px; background:#fff; }
+  .card-wrap { position: relative; width: 100%; line-height:0; }
+  .card-wrap img { width: 100%; display:block; }
+
+  /* 五個浮動圖示：疊在圖片右側「乾淨無內容」的直向色帶上，
+     用百分比定位，不管圖片實際顯示寬度多少都會等比例對齊同一個位置 */
+  .icon {
+    position:absolute;
+    width: 7.15%;          /* 比原本大 15%，對應原圖約 77px 直徑 */
+    aspect-ratio: 1/1;
+    right: 8.0%;           /* 維持置中在原圖乾淨色帶內，跟著放大微調 */
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 3px 8px rgba(0,0,0,.22);
+  }
+  .icon svg { width: 52%; height: 52%; }
+
+  .icon-contact { top: 51.5%; background:#1878F0; }
+  .icon-line    { top: 57.3%; background:#06C755; }
+  .icon-web     { top: 63.1%; background:#3ECB6A; }
+  .icon-form    { top: 68.9%; background:#FC9B12; }
+  .icon-map     { top: 74.7%; background:#4D8CF2; }
+</style>
 </head>
 <body>
 
-<div class="card-container">
-    <img src="Michaelchou-p.png" alt="Business Card" class="business-card-img">
-    <a href="michaelchou-01.vcf" class="btn btn-contact">👤 儲存至手機聯絡人</a>
-    <a href="https://line.me/ti/p/LfG3CucgV6" target="_blank" class="btn btn-line">💬 加我 Line 好友</a>
-    <a href="https://www.taipeinewhorizon.com.tw/" target="_blank" class="btn btn-url">🌐 臺北文創官方網站</a>
-    <a href="場地申請表-1050829-1.doc" class="btn btn-form">📄 下載場地使用申請表單</a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=臺北文創開發股份有限公司" target="_blank" class="btn btn-map">📍 一鍵導航至臺北文創</a>
+<div class="phone">
+  <div class="card-wrap">
+    <img src="michaelchou-p.png" alt="臺北文創數位名片">
+
+    <a class="icon icon-contact" href="michaelchou-01.vcf" title="儲存至手機聯絡人">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="white" stroke-width="1.8"/><path d="M5 19c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </a>
+    <a class="icon icon-line" href="https://line.me/ti/p/LfG3CucgV6" target="_blank" title="加我 Line 好友">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 4C7 4 3 7.3 3 11.4c0 2.6 1.7 4.9 4.3 6.2-.2.9-.7 2.4-.8 2.8-.1.3.1.3.3.2.2-.1 2.5-1.6 3.5-2.3.5.1 1.1.1 1.7.1 5 0 9-3.3 9-7.4S17 4 12 4Z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="icon icon-web" href="https://www.taipeinewhorizon.com.tw/" target="_blank" title="臺北文創官方網站">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="white" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="3.2" ry="8" stroke="white" stroke-width="1.6"/><path d="M4 12h16" stroke="white" stroke-width="1.6"/></svg>
+    </a>
+    <a class="icon icon-form" href="場地申請表-1050829-1.doc" title="下載場地使用申請表單">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7l3.5 3.5V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11v6m0 0-2.3-2.3M12 17l2.3-2.3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="icon icon-map" href="https://www.google.com/maps/dir/?api=1&destination=臺北文創開發股份有限公司" target="_blank" title="一鍵導航至臺北文創">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11.3A7 7 0 0 0 5 9.7C5 14.9 12 21 12 21Z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.3" stroke="white" stroke-width="1.6"/></svg>
+    </a>
+  </div>
 </div>
 
-<!-- GoatCounter 流量統計:頁面瀏覽自動記錄,按鈕點擊以 data-goatcounter-click 記錄 -->
-<script data-goatcounter="https://taipeinewhorizon.goatcounter.com/count"        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
