@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>疊加測試</title>
+<title>我的數位名片</title>
 <style>
   * { box-sizing: border-box; }
-  body { margin: 0; background:#e8e8ea; font-family: -apple-system, "PingFang TC", sans-serif; display:flex; justify-content:center; }
+  body { margin: 0; background:#fff; font-family: -apple-system, "PingFang TC", sans-serif; display:flex; justify-content:center; }
   .phone { width: 100%; max-width: 430px; background:#fff; }
   .card-wrap { position: relative; width: 100%; line-height:0; }
   .card-wrap img { width: 100%; display:block; }
@@ -21,8 +21,28 @@
     border-radius: 50%;
     display:flex; align-items:center; justify-content:center;
     box-shadow: 0 3px 8px rgba(0,0,0,.22);
+    z-index: 2;
   }
-  .icon svg { width: 52%; height: 52%; }
+  .icon svg { width: 52%; height: 52%; position:relative; z-index:1; }
+
+  /* 光環閃爍：從圖示本身的顏色往外擴散、淡出，五個同步跳動 */
+  .icon::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background: inherit;
+    animation: halo-pulse 2.2s ease-out infinite;
+    z-index:0;
+  }
+  @keyframes halo-pulse {
+    0%   { transform: scale(1);   opacity: .55; }
+    70%  { transform: scale(1.9); opacity: 0; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .icon::before { animation: none; }
+  }
 
   .icon-contact { top: 51.5%; background:#1878F0; }
   .icon-line    { top: 57.3%; background:#06C755; }
